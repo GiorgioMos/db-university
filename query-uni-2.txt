@@ -1,0 +1,49 @@
+Domanda 1
+
+SELECT students.name, students.surname, degrees.name AS "degree name"
+FROM students
+JOIN degrees
+ON students.degree_id = degrees.id
+WHERE degrees.name = "Corso di laurea in economia";
+
+Domanda 2
+
+SELECT degrees.name, departments.name AS "department name", degrees.level
+FROM degrees
+JOIN departments
+ON degrees.department_id = departments.id
+WHERE departments.name = "Dipartimento di Neuroscienze"
+AND degrees.level = "magistrale";
+
+
+Domanda 3
+
+SELECT courses.name, course_teacher.teacher_id
+FROM course_teacher
+JOIN courses
+ON course_teacher.course_id = courses.id
+WHERE course_teacher.teacher_id = 44;
+
+
+Domanda 4
+
+SELECT students.surname, students.name, degrees.name, degrees.level, departments.name
+FROM students
+JOIN degrees
+ON students.degree_id = degrees.id
+JOIN departments
+ON degrees.department_id = departments.id
+ORDER BY students.surname ASC, students.name ASC;
+
+
+Domanda 5)
+
+SELECT degrees.id, degrees.department_id, degrees.name, courses.name, teachers.name
+FROM `degrees`
+INNER JOIN courses
+ON courses.degree_id = degrees.id
+INNER JOIN course_teacher
+ON course_teacher.course_id = courses.id
+INNER JOIN teachers 
+ON teachers.id = course_teacher.teacher_id
+ORDER BY degrees.name;
